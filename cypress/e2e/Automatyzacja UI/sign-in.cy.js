@@ -31,7 +31,28 @@ describe("Visit the given page", () => {
             cy.get("#passwd").type(randPassword);
 
             //Date options
-            cy.get("#days").select("1"); //Dopisz birthday do users.json i split'nij to po kropce i wybierz dzien po czym wybierz to z users[0].birthday
+            cy.get("#days").select(users[0].birthday.split('.')[0]);
+            cy.get("#months").select(users[0].birthday.split('.')[1]);
+            cy.get("#years").select(users[0].birthday.split('.')[2]);
+
+            //Checkboxes
+            cy.get("#uniform-newsletter").click(); //.parent().check() won't work as it radio button but div
+            cy.get("#uniform-optin").click();
+
+        })
+    })
+    it("Fill in Address from fixtures", () => {
+        cy.fixture("users").then(users => {
+            cy.get("#firstname").type(users[0].name.split(' ')[0]);
+            cy.get("#lastname").type(users[0].name.split(' ')[1]);
+            cy.get("#company").type(users[0].company.name);
+            cy.get("#address1").type(users[0].address.street + " " + users[0].address.city + " " + users[0].address.zipcode);
+            cy.get("#address2").type(users[0].address.suite);
+            cy.get("#city").type(users[0].address.city);
+            cy.get("#id_state").select(21); //No European countries
+            cy.get("#postcode").type(users[0].address.zipcode.split('-')[0]);
+            cy.get("#phone_mobile").type(users[0].phone.split(' ')[0].split('-').join('')); //remove the right side, split on "-", join together
+
         })
     })
     
