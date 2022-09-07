@@ -1,0 +1,23 @@
+{
+  "name": "automatyzacja-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "open": "npx cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J-Lub-debug/Cypress-automatyzacja-UI.git"
+  },
+  "author": "Jan Lubiejewski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/J-Lub-debug/Cypress-automatyzacja-UI/issues"
+  },
+  "homepage": "https://github.com/J-Lub-debug/Cypress-automatyzacja-UI#readme",
+  "devDependencies": {
+    "cypress": "^10.7.0"
+  }
+}
