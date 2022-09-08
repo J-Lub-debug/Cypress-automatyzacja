@@ -1,0 +1,28 @@
+[
+    {
+      "id": 11,
+      "name": "Janusz Kowalski",
+      "username": "Janusz",
+      "email": "januszkowalski@gmail.com",
+      "password": "123j456j",
+      "birthday": "31.10.1996",
+      "address": {
+        "street": "Kulas Light",
+        "suite": "Apt. 556",
+        "city": "Honolulu",
+        "zipcode": "96795",
+        "state": "Hawaii",
+        "geo": {
+          "lat": "-37.3159",
+          "lng": "81.1496"
+        }
+      },
+      "phone": "468123548",
+      "website": "hildegard.org",
+      "company": {
+        "name": "Romaguera-Crona",
+        "catchPhrase": "Multi-layered client-server neural-net",
+        "bs": "harness real-time e-markets"
+      }
+    }
+]
