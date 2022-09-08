@@ -14,7 +14,7 @@ describe("Visit the given page", () => {
 
     it("Should autofill e-mail with e-mail given beforehand", () => {
         cy.fixture("users").then(users => {
-            cy.get("#email").should("have.value", users[0].email);
+            cy.get("#email").should("have.value", users[0].email); //timeout might be needed due to slow performance of website
         })
     })
 
@@ -36,7 +36,7 @@ describe("Visit the given page", () => {
             cy.get("#years").select(users[0].birthday.split('.')[2]);
 
             //Checkboxes
-            cy.get("#uniform-newsletter").click(); //.parent().check() won't work as it radio button but div
+            cy.get("#uniform-newsletter").click(); //.parent().check() won't work as it's not radio button but div
             cy.get("#uniform-optin").click();
 
         })
@@ -54,6 +54,9 @@ describe("Visit the given page", () => {
             cy.get("#phone_mobile").type(users[0].phone.split(' ')[0].split('-').join('')); //remove the right side, split on "-", join together
 
         })
+    })
+    it("Submit account", () => {
+        //cy.get("#submitAccount").click();
     })
     
 })
