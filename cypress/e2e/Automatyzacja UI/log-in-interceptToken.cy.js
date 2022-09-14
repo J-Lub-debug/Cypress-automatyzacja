@@ -4,7 +4,7 @@ describe("Log in test", ()=> {
         cy.visit("/?controller=authentication&back=my-account");
     })
 
-    it("Intercept static token value using request with valid login data", () => {
+    it("Intercept static token value using POST request with valid login data", () => {
         cy.fixture("registeredUsers").then(user => {
             const authorizationData = {
                 "user": {
@@ -16,7 +16,7 @@ describe("Log in test", ()=> {
             cy.request("POST", "http://automationpractice.com/index.php?controller=authentication", authorizationData)
             .its("body").then(response => {
                 console.log(response); //token and static token are stored in html doc type in var static_token AND var token
-                
+
                 let staticTokenPosition = response.search("static_token"); //response is char[] array it finds index of first character of String
                 let firstPosStaticToken = staticTokenPosition+16; //position of first char is "static_token = '".length()
                 let staticToken = "";
@@ -24,6 +24,7 @@ describe("Log in test", ()=> {
                     staticToken = staticToken + response[firstPosStaticToken+i];
                 } 
                 console.log(staticToken);
+
                 let tokenPosition = response.search(" token") + 1; //to differenciate from static_token added " " in front. Req + 1
                 let firstPosToken = tokenPosition + 9;
                 let token = "";
@@ -31,6 +32,9 @@ describe("Log in test", ()=> {
                     token = token + response[firstPosToken+i];
                 } 
                 console.log(token);
+                
+                //Write token and static token to new fixtures file
+                cy.writeFile('cypress/fixtures/token.json', {token: token, staticToken: staticToken}) //overwrites file
             })
         })
     })
